@@ -1,0 +1,267 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Assistant Chatbot</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+        }
+
+        .header {
+            background: #263238;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .buttons {
+            margin-top: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            color: white;
+            padding: 10px 18px;
+            margin: 5px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        .dashboard {
+            background: #1976d2;
+        }
+
+        .quiz {
+            background: #7b1fa2;
+        }
+
+        .materials {
+            background: #388e3c;
+        }
+
+        .logout {
+            background: #e53935;
+        }
+
+        .chat-container {
+            width: 80%;
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        .welcome {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .subject-box {
+            margin-bottom: 20px;
+        }
+
+        .subject-box label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .subject-box select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .question-box {
+            display: flex;
+            gap: 10px;
+        }
+
+        .question-box input {
+            flex: 1;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .question-box button {
+            padding: 13px 25px;
+            border: none;
+            border-radius: 8px;
+            background: #263238;
+            color: white;
+            cursor: pointer;
+        }
+
+        .answer {
+            margin-top: 25px;
+            padding: 18px;
+            background: #f1f3f4;
+            border-radius: 10px;
+        }
+
+        .history {
+            margin-top: 30px;
+        }
+
+        .history-item {
+            background: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+
+        <h1>🎓 Student Assistant Chatbot</h1>
+
+        <p>Your AI-powered study assistant</p>
+
+        <div class="buttons">
+
+            <a href="{% url 'dashboard' %}" class="btn dashboard">
+                📊 Dashboard
+            </a>
+
+            <a href="{% url 'quiz' %}" class="btn quiz">
+                📝 Python Quiz
+            </a>
+
+            <a href="{% url 'materials' %}" class="btn materials">
+                📚 Study Materials
+            </a>
+
+            <a href="{% url 'logout' %}" class="btn logout">
+                🚪 Logout
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="chat-container">
+
+        <div class="welcome">
+
+            <h2>👋 Hello {{ username }}!</h2>
+
+            <p>Ask me anything about your studies.</p>
+
+        </div>
+
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="subject-box">
+
+                <label>📚 Select Subject</label>
+
+                <select name="subject" required>
+
+                    <option value="">-- Select Subject --</option>
+
+                    <option value="Python">Python</option>
+
+                    <option value="DBMS">DBMS</option>
+
+                    <option value="Java">Java</option>
+
+                    <option value="Machine Learning">
+                        Machine Learning
+                    </option>
+
+                    <option value="Computer Networks">
+                        Computer Networks
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="question-box">
+
+                <input
+                    type="text"
+                    name="question"
+                    placeholder="Ask your question..."
+                    required
+                >
+
+                <button type="submit">Ask</button>
+
+            </div>
+
+        </form>
+
+
+        {% if answer %}
+
+        <div class="answer">
+
+            <h3>🤖 Assistant Answer</h3>
+
+            <p>{{ answer }}</p>
+
+        </div>
+
+        {% endif %}
+
+
+        {% if history %}
+
+        <div class="history">
+
+            <h2>📜 Previous Questions</h2>
+
+            {% for chat in history %}
+
+            <div class="history-item">
+
+                <p>
+                    <strong>Subject:</strong>
+                    {{ chat.subject }}
+                </p>
+
+                <p>
+                    <strong>Question:</strong>
+                    {{ chat.question }}
+                </p>
+
+                <p>
+                    <strong>Answer:</strong>
+                    {{ chat.answer }}
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
+```

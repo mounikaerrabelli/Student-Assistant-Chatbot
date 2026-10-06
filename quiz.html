@@ -1,0 +1,195 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Python Quiz</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 42px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 22px;
+            margin-bottom: 30px;
+        }
+
+        .question {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .question h2 {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-size: 20px;
+            margin: 18px 0;
+            cursor: pointer;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .submit-btn {
+            display: block;
+            margin: 30px auto;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 8px;
+            background: #263238;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #455a64;
+        }
+
+        .score {
+            text-align: center;
+            background: #e8f5e9;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 25px;
+        }
+
+        .back-btn {
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            padding: 12px 25px;
+            background: #263238;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📝 Python Quiz</h1>
+
+    <p class="subtitle">Test your knowledge!</p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <!-- Question 1 -->
+        <div class="question">
+
+            <h2>1. What is Python?</h2>
+
+            <label>
+                <input type="radio" name="q1" value="python">
+                Programming Language
+            </label>
+
+            <label>
+                <input type="radio" name="q1" value="database">
+                Database
+            </label>
+
+            <label>
+                <input type="radio" name="q1" value="os">
+                Operating System
+            </label>
+
+            <label>
+                <input type="radio" name="q1" value="browser">
+                Browser
+            </label>
+
+        </div>
+
+
+        <!-- Question 2 -->
+        <div class="question">
+
+            <h2>2. Which symbol is used for comments in Python?</h2>
+
+            <label>
+                <input type="radio" name="q2" value="#">
+                #
+            </label>
+
+            <label>
+                <input type="radio" name="q2" value="//">
+                //
+            </label>
+
+            <label>
+                <input type="radio" name="q2" value="/*">
+                /*
+            </label>
+
+            <label>
+                <input type="radio" name="q2" value="@@">
+                @@
+            </label>
+
+        </div>
+
+
+        <button type="submit" class="submit-btn">
+            Submit Quiz
+        </button>
+
+    </form>
+
+
+    {% if score is not None %}
+
+    <div class="score">
+
+        <h2>🎉 Your Score: {{ score }} / 2</h2>
+
+        {% if score == 2 %}
+            <p>Excellent! All answers are correct.</p>
+
+        {% elif score == 1 %}
+            <p>Good! You got 1 answer correct.</p>
+
+        {% else %}
+            <p>Keep practicing and try again!</p>
+
+        {% endif %}
+
+    </div>
+
+    {% endif %}
+
+
+    <a href="{% url 'home' %}" class="back-btn">
+        ⬅ Back to Assistant
+    </a>
+
+</div>
+
+</body>
+</html>
+```

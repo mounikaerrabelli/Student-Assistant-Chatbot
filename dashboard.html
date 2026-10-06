@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+        }
+
+        .header {
+            background: #263238;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .dashboard {
+            width: 85%;
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        .cards {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background: white;
+            width: 180px;
+            padding: 25px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .card h2 {
+            font-size: 35px;
+            margin: 10px;
+        }
+
+        .back {
+            display: block;
+            width: fit-content;
+            margin: 30px auto;
+            padding: 12px 25px;
+            background: #263238;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>📊 Student Dashboard</h1>
+    <p>👤 Welcome, {{ username }}</p>
+</div>
+
+<div class="dashboard">
+
+    <div class="cards">
+
+        <div class="card">
+            <h2>📚</h2>
+            <h3>Total Questions</h3>
+            <h2>{{ total_questions }}</h2>
+        </div>
+
+        <div class="card">
+            <h2>🐍</h2>
+            <h3>Python</h3>
+            <h2>{{ python_questions }}</h2>
+        </div>
+
+        <div class="card">
+            <h2>🗄️</h2>
+            <h3>DBMS</h3>
+            <h2>{{ dbms_questions }}</h2>
+        </div>
+
+        <div class="card">
+            <h2>☕</h2>
+            <h3>Java</h3>
+            <h2>{{ java_questions }}</h2>
+        </div>
+
+    </div>
+
+    <a href="{% url 'home' %}" class="back">
+        ⬅ Back to Assistant
+    </a>
+
+</div>
+
+</body>
+</html>

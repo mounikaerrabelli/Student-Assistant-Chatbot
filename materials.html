@@ -1,0 +1,110 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Study Materials</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+        }
+
+        .header {
+            background: #263238;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        .materials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .card {
+            background: white;
+            width: 220px;
+            padding: 25px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .card h2 {
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #555;
+        }
+
+        .back {
+            display: block;
+            width: fit-content;
+            margin: 30px auto;
+            padding: 12px 25px;
+            background: #263238;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>📚 Study Materials</h1>
+        <p>Useful subjects for your preparation</p>
+    </div>
+
+    <div class="container">
+
+        <div class="materials">
+
+            <div class="card">
+                <h2>🐍 Python</h2>
+                <p>Basics, variables, loops, functions and OOP concepts.</p>
+            </div>
+
+            <div class="card">
+                <h2>🗄️ DBMS</h2>
+                <p>SQL, normalization, keys, transactions and databases.</p>
+            </div>
+
+            <div class="card">
+                <h2>☕ Java</h2>
+                <p>Classes, objects, inheritance, polymorphism and OOP.</p>
+            </div>
+
+            <div class="card">
+                <h2>🤖 Machine Learning</h2>
+                <p>ML basics, algorithms, training and prediction.</p>
+            </div>
+
+            <div class="card">
+                <h2>🌐 Computer Networks</h2>
+                <p>Network types, protocols, OSI model and TCP/IP.</p>
+            </div>
+
+        </div>
+
+        <a href="{% url 'home' %}" class="back">
+            ⬅ Back to Assistant
+        </a>
+
+    </div>
+
+</body>
+</html>
+```
